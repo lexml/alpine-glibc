@@ -1,3 +1,4 @@
+#version 3.10_2.29-r0-1
 FROM alpine:3.10.0
 
 ENV GLIBC_VERSION 2.29-r0
