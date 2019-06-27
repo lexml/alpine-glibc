@@ -1,0 +1,8 @@
+#!/bin/bash
+. version
+if [ "$IMAGE_VERSION" != "" ] ; then
+  IMAGE_VERSION_SUFFIX="_${IMAGE_VERSION}"
+else  
+  IMAGE_VERSION_SUFFIX=""
+fi
+echo "${ALPINE_VERSION}_${GLIBC_VERSION}${IMAGE_VERSION_SUFFIX}"

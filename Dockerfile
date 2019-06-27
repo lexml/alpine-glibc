@@ -1,7 +1,8 @@
-#version 3.10_2.29-r0-1
-FROM alpine:3.10.0
+#image version: 1
+ARG ALPINE_VERSION
+FROM alpine:$ALPINE_VERSION
 
-ENV GLIBC_VERSION 2.29-r0
+ARG GLIBC_VERSION 
 
 # Download and install glibc
 RUN apk add --update curl && \
@@ -17,4 +18,5 @@ RUN apk add --update curl && \
   /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8 && \
   echo 'LANG=en_US.UTF-8' > /etc/locale.conf && \
   apk del curl && \
-  rm -rf glibc.apk glibc-bin.apk glibc-i18n.apk /var/cache/apk/*
+  rm -rf glibc.apk glibc-bin.apk glibc-i18n.apk /var/cache/apk/* 
+COPY version /etc/alpine-glibc-build-version  
